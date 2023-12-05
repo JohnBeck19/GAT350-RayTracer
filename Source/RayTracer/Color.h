@@ -1,5 +1,6 @@
 #pragma once
 #include <glm/glm.hpp>
+#include <algorithm>
 
 using color3_t = glm::vec3;
 using color4_t = glm::vec4;
@@ -17,6 +18,6 @@ inline color4_t RGBAToColor(const rgba_t& rgba)
 
 inline rgba_t ColorToRGBA(const color4_t& color)
 {
-	return ((rgba_t)(color.a * 255.0f)) | ((rgba_t)(color.b * 255.0f) << 8)
-		| ((rgba_t)(color.g * 255.0f) << 16) | ((rgba_t)(color.r * 255.0f) << 24);
+	return ((rgba_t)(glm::clamp(color.a, 0.0f, 1.0f) * 255.0f)) | ((rgba_t)(glm::clamp(color.b, 0.0f, 1.0f) * 255.0f) << 8)
+		| ((rgba_t)(glm::clamp(color.g, 0.0f, 1.0f) * 255.0f) << 16) | ((rgba_t)(glm::clamp(color.r, 0.0f, 1.0f) * 255.0f) << 24);
 }
