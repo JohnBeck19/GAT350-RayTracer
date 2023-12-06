@@ -9,14 +9,12 @@ class Scene
 {
 public:
 	Scene() = default;
-	Scene(int depth = 5) : m_depth{ depth } {}
-	Scene(int depth, const color3_t& topColor, const color3_t& bottomColor) :
-		m_depth{ depth },
+	Scene(const color3_t & topColor, const color3_t & bottomColor) :
 		m_topColor{ topColor },
 		m_bottomColor{ bottomColor }
 	{}
 
-	void Render(class Canvas& canvas, int numSamples);
+	void Render(class Canvas& canvas, int numSamples, int depth);
 	color3_t Trace(const ray_t& ray);
 
 	void SetCamera(std::shared_ptr<Camera> camera) { m_camera = camera; }
