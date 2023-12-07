@@ -9,6 +9,7 @@ public:
 		m_center{center},
 		m_normal{normal}
 	{
+		
 	}
 
 	bool Hit(const ray_t& ray, float minDistance, float maxDistance, raycastHit_t& raycastHit) override;
